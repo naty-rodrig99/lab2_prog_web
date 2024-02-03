@@ -8,11 +8,14 @@ const model = {
     currentDishId: null,  // null means "intentionally empty"
 
     setCurrentDishId(dishId){
-        // this.someProperty= someValue
+        this.currentDishId= dishId
     },
     
     setNumberOfGuests(number){
-
+        if(number>0 && Number.isInteger(number)){
+            this.numberOfGuests=number
+        }
+        else{throw new Error("number of guests not a positive integer");}
     },
     
     addToMenu(dishToAdd){
@@ -24,9 +27,14 @@ const model = {
     // filter callback exercise
     removeFromMenu(dishToRemove){
         function shouldWeKeepDishCB(dish){
-
+            if(dish.id===dishToRemove.id){
+                return false
+            }
+            else{
+                return true
+            }
         }
-        this.dishes= this.dishes.filter(/* pass the callback */);
+        this.dishes= this.dishes.filter(shouldWeKeepDishCB);
     },
     
  

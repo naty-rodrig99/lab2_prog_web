@@ -4,10 +4,10 @@ import "/src/teacherFetch.js"; // protection against fetch() in infinite re-rend
 import { model } from "/src/DinnerModel.js";
 
 // uncomment to make the app update when the model changes.
-/*
+
 import { reactive } from "vue";
 const reactiveModel= reactive(model);
-*/
+
 
 // then use reactiveModel instead of model below!
 
@@ -18,7 +18,7 @@ import { createApp, h } from "vue";
 window.React= {createElement:h};  // needed in the lab because it works with both React and Vue
 
 import { VueRoot } from "./VueRoot.jsx";
-const app= createApp(<VueRoot model={model} />);
+const app= createApp(<VueRoot model={reactiveModel} />);
 
 
 app.mount('#root'); // mounts the app in the page DIV with the id "root"
@@ -27,5 +27,5 @@ app.mount('#root'); // mounts the app in the page DIV with the id "root"
 
 
 // ------ for debug purposes ----------
-window.myModel= model;             // make the model available in the Console
-//window.myModel= reactiveModel;  
+//window.myModel= model;             // make the model available in the Console
+window.myModel= reactiveModel;  

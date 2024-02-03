@@ -4,11 +4,11 @@ import "/src/teacherFetch.js"; // protection against fetch() in infinite re-rend
 import { model } from '/src/DinnerModel.js';
 
 // uncomment to make the app update when the model changes:
-/*
+
 import { observable, configure } from "mobx";
 configure({ enforceActions: "never", });  // we don't use Mobx actions
 const reactiveModel= observable(model);
-*/
+
 // then use reactiveModel instead of model below!
 
 // (2) ----------  display (mount) the root component in the browser page. Pass model(1) as prop. ---------
@@ -21,14 +21,14 @@ import { createRoot } from "react-dom/client";
 import { ReactRoot } from "./ReactRoot.jsx";
 
 createRoot(document.getElementById('root'))
-    .render(<ReactRoot model={model}/>);  // mounts the app in the page DIV with the id "root"
+    .render(<ReactRoot model={reactiveModel}/>);  // mounts the app in the page DIV with the id "root"
 // to see the DIV, look at react.html in the developer tools Sources
 // react.html, with the content <div id="root"></div> is configured in vite.config.js
 
 
 // ------ for debug purposes ----------
-window.myModel= model;             // make the model available in the Console
-//window.myModel= reactiveModel;  
+//window.myModel= model;             // make the model available in the Console
+window.myModel= reactiveModel;  
 
 
 
