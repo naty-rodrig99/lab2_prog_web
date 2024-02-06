@@ -11,6 +11,15 @@ import vuePlugin from '@vitejs/plugin-vue';
 //import reactJsxPlugin from '@vitejs/plugin-react';
 import {username, semester, telemetryUserInfo} from "./test/telemetryConfig.js";
 
+
+
+// Base URL with course proxy and API server
+export const BASE_URL = `https://brfenergi.se/iprog/group/22/https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com`;
+
+// Exporting the API key
+export const API_KEY = "3d2a031b4cmsh5cd4e7b939ada54p19f679jsn9a775627d767";
+
+
 // if solved-X.js (or .jsx or .vue or .css) exists, then solved-X.js is tested, otherwise  X.js
 const prefix=  fs.existsSync("./src/solved-utilities.js")?"solved-":"";
 
