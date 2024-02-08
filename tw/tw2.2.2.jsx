@@ -49,15 +49,16 @@ if (SearchResultsView) {
   }).then(function displayResultsACB(results) {
     render(
       <div>
-        {preamble}
-        <SearchResultsView
-          searchResults={results}
-          dishChosenCustomEvent={function resultChosenACB(searchResult) {
-            console.log(
-              "user chose searchResult: ",
-              JSON.stringify(searchResult)
-            );
-          }}
+          {preamble}
+          <SearchResultsView {...{
+              searchResults:results,
+              [dishChosenCustomEvent]:function resultChosenACB(searchResult) {
+		  console.log(
+		      "user chose searchResult: ",
+		      JSON.stringify(searchResult)
+		  );
+              }}
+			     }
         />
       </div>,
       document.getElementById("root")

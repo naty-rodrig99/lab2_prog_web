@@ -52,19 +52,22 @@ if (SearchFormView) {
   render(
     <div>
       {preamble}
-      <SearchFormView
-        dishTypeOptions={["starter", "main course", "dessert"]}
-        text="pizza"
-        type="main course"
-        textChangeCustomEvent={function searchTextACB(txt) {
-          console.log("user wants to set the dish search text ", txt);
-        }}
-        typeChangeCustomEvent={function searchTypeCB(typ) {
-          console.log("user wants to set the dish search type ", typ);
-        }}
-        searchButtonCustomEvent={function searchNowACB() {
-          console.log("user wants to search now!");
-        }}
+	<SearchFormView {...{
+            dishTypeOptions:["starter", "main course", "dessert"],
+            text:"pizza",
+            type:"main course",
+	    
+            [textChangeCustomEvent]:function searchTextACB(txt) {
+		console.log("user wants to set the dish search text ", txt);
+            },
+            [typeChangeCustomEvent]:function searchTypeCB(typ) {
+		console.log("user wants to set the dish search type ", typ);
+            },
+            [searchButtonCustomEvent]:function searchNowACB() {
+		console.log("user wants to search now!");
+            }
+	}
+			}
       />
     </div>,
     document.getElementById("root")

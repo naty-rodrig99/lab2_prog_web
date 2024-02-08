@@ -59,7 +59,7 @@ if (getMenuDetails && DetailsView) {
                 dishData={dish1}
                 isDishInMenu={true}
                 guests={7}
-                addToMenuCustomEvent={addToMenuACB}
+		  {... {[addToMenuCustomEvent]:addToMenuACB } }
               />
             </div>
             <div style={{ flex: "0.5", padding: "20px" }}>
@@ -67,7 +67,7 @@ if (getMenuDetails && DetailsView) {
                 dishData={dish2}
                 isDishInMenu={false}
                 guests={3}
-                addToMenuCustomEvent={addToMenuACB}
+		  {... {[addToMenuCustomEvent]:addToMenuACB } }
               />
             </div>
           </div>
