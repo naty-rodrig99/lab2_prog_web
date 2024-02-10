@@ -9,7 +9,7 @@ export function searchDishes(searchParams){
         queryParams.append('query',searchParams.query);
     }
 
-    const URL = `${BASE_URL}/recipes/complexSearch?${queryParams.toString()}`;
+    const URL = `${BASE_URL}/recipes/complexSearch?${queryParams}`;
 
     const options = {
         method: 'GET',
@@ -20,7 +20,7 @@ export function searchDishes(searchParams){
     };
     return fetch(URL, options).then(gotResponseACB).then(someACB);
 
-    // Function to handle response
+    //aynchronous callback to handle response
     function gotResponseACB(response) {
         if (!response.ok) {
             throw new Error('not ok');
@@ -32,3 +32,39 @@ export function searchDishes(searchParams){
         return objectResponse.results; 
     }
 }
+
+export function getMenuDetails(ids_array){
+    const queryParams = new URLSearchParams({ids: ids_array});
+
+    const URL = `${BASE_URL}/recipes/informationBulk?${queryParams}`;
+
+    const options = {
+        method: 'GET',
+        headers: {
+            'X-DH2642-Key': API_KEY,
+            'X-DH2642-Group': '22' // Replaced with group number
+        }
+    };
+
+    return fetch(URL, options).then(gotResponseACB).then(someACB);
+
+    //aynchronous callback
+    function gotResponseACB(response){
+        if (!response.ok) {
+            throw new Error(`response was not 200`);
+        }
+        return response.json();
+    }
+
+    function someACB(objectResponse){
+        return objectResponse; 
+    }
+} 
+
+export function getDishDetails(id){
+    return getMenuDetails(id).then(arrayToObjectACB);
+
+    function arrayToObjectACB(idArray){
+        return idArray[0];
+    }
+} 
