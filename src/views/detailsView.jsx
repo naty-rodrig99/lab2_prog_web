@@ -1,5 +1,5 @@
 export function DetailsView(props){
-    console.log("props", props.dishData)
+    //console.log("props", props.dishData)
 
     function addToMenuACB(evt){
         props.addToMenuACB(props.dishData)
