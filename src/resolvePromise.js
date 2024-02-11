@@ -4,6 +4,7 @@ export function resolvePromise(prms, promiseState){
     promiseState.error= null;
 
     function dataACB(result){
+        //race condition - make sure get the result for promise requested
         if(promiseState.promise==prms){
             promiseState.data=result;
         }
