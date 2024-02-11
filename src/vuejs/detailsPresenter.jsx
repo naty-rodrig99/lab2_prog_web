@@ -1,19 +1,25 @@
 import { DetailsView } from "../views/detailsView.jsx";
 
 function Details(props){
-    let inInMenu=false;
-    for(let i in props.model.dishes){
-        if(props.model.dishes[i].id==props.model.currentDishId){
-            inInMenu = true;
+    function isInDishesCB(dish){
+        if(dish.id===props.model.currentDishId){
+            return true;
         }
+        return false;
     }
+    // for(let i=0; i<props.model.dishes.length; i++){
+    //     if(props.model.dishes[i].id===props.model.currentDishId){
+    //         inInMenu = true;
+    //     }
+    // }
 
-    function searchACB(txt){
-        resolvePromise(searchPromise(txt), props.model.searchResultsPromiseState);
-    }
-    //console.log("props", props.model.addToMenu)
-    function setAddToMenuACB(evt){
-        props.model.addToMenu(evt);
+    // function searchACB(txt){
+    //     resolvePromise(searchPromise(txt), props.model.searchResultsPromiseState);
+    // }
+    console.log("props", props.currentDishPromiseState)
+
+    function setAddToMenuACB(){
+        props.model.addToMenu(props.model.currentDishPromiseState.data)
     }
 
     if(!props.model.currentDishPromiseState.promise){
@@ -29,10 +35,9 @@ function Details(props){
     }
     
     return <DetailsView 
-    searchCustomEvent={searchACB}
     dishData ={props.model.currentDishPromiseState.data}
     guests={props.model.numberOfGuests}
-    isDishInMenu={inInMenu}
+    isDishInMenu={props.model.dishes.find(isInDishesCB)}
     addToMenuACB={setAddToMenuACB} 
     />;
 }

@@ -1,7 +1,7 @@
 export function DetailsView(props){
     //console.log("props", props.dishData)
 
-    function addToMenuACB(evt){
+    function dishAddToMenuACB(evt){
         props.addToMenuACB(props.dishData)
     }
     function cancelFromMenuACB(evt){
@@ -11,8 +11,8 @@ export function DetailsView(props){
     return (
         <div className="detailsView">
             <div className="menuButton">
-                <button disabled={props.isDishInMenu} onClick={addToMenuACB}>Add to menu!</button>
-                <button disabled={!props.isDishInMenu} onClick={cancelFromMenuACB}>Cancel!</button>
+                <button disabled={props.isDishInMenu} onClick={dishAddToMenuACB}>Add to menu!</button>
+                <button disabled={!props.isDishInMenu}>Cancel!</button>
             </div>
             
             <h1>{props.dishData.creditsText}</h1>
