@@ -3,8 +3,19 @@ export function resolvePromise(prms, promiseState){
     promiseState.data= null;
     promiseState.error= null;
 
-    function dataACB(result){promiseState.data=result;}
-    function errorACB(err){promiseState.error=err;}
-    prms.then(dataACB).catch(errorACB)
+    function dataACB(result){
+        if(promiseState.promise==prms){
+            promiseState.data=result;
+        }
+    }
+    function errorACB(err){
+        if(promiseState.promise==prms){
+            promiseState.error=err;
+        }
+    }
+    if (prms!=null){
+        prms.then(dataACB).catch(errorACB)
+    }
+    
 
 }
