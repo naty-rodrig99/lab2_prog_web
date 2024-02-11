@@ -2,16 +2,22 @@
 
 export function SearchFormView(props){
     //console.log("props", props)
-    function searchTextACB(evt){
-        //console.log(props)
-        console.log("user wants to set the dish search text ", evt.target.value);
+    function sendSearchTextACB(evt){
+        console.log("props",evt.target.value)
+        props.searchTextACB(evt.target.value);
+        //console.log("props",props)
     }
-    function searchTypeCB(evt){
-        console.log("user wants to set the dish search type ", evt.target.value);
+    /*function sendSearchTextACB(text){
+        console.log("user wants to set the dish search text ", text);
+    }*/
+    function sendsearchTypeCB(evt){
+        //console.log("user wants to set the dish search type ", evt.target.value);
+        props.searchTypeCB(evt.target.value)
     }
 
-    function searchNowACB(evt){
-        console.log("user wants to search now!");
+    function sendsearchNowACB(evt){
+        //console.log("user wants to search now!");
+        props.searchNowACB()
     }
 
     //used for array rendering
@@ -21,12 +27,12 @@ export function SearchFormView(props){
 
     return (
         <div className="searchFormView">
-            <input type="text" value={props.text || ""} onChange={searchTextACB}/>
-            <select value={props.type || ""}onChange={searchTypeCB}>
+            <input type="text" value={props.text || ""} onChange={sendSearchTextACB}/>
+            <select value={props.type || ""}onChange={sendsearchTypeCB}>
                 <option value="">Choose:</option>
                 {props.dishTypeOptions.map(dishTypeOptionsCB)}
             </select>
-            <button onClick={searchNowACB}>Search!</button>
+            <button onClick={sendsearchNowACB}>Search!</button>
           
         </div>
     );

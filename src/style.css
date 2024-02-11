@@ -6,3 +6,18 @@
 .TD{
     text-align: right;
 }
+.searchResultsView {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 10px;
+  }
+
+.searchResultsView span{
+    width: 120px;
+    text-align: center;
+}
+.searchResultsView span img{
+    height: 100;
+    width: 100px;
+    align-items: center;
+}
