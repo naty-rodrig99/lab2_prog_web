@@ -7,16 +7,6 @@ function Details(props){
         }
         return false;
     }
-    // for(let i=0; i<props.model.dishes.length; i++){
-    //     if(props.model.dishes[i].id===props.model.currentDishId){
-    //         inInMenu = true;
-    //     }
-    // }
-
-    // function searchACB(txt){
-    //     resolvePromise(searchPromise(txt), props.model.searchResultsPromiseState);
-    // }
-    console.log("props", props.currentDishPromiseState)
 
     function setAddToMenuACB(){
         props.model.addToMenu(props.model.currentDishPromiseState.data)

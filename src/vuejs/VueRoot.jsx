@@ -1,15 +1,18 @@
 import { Summary }  from "./summaryPresenter.jsx";
+import {Sidebar} from "./sidebarPresenter.jsx";
+import {Details} from "./detailsPresenter.jsx";
+import {Search} from "./searchPresenter.jsx";
 
 
 function VueRoot(props){
+    console.log(props)
     return (<div>
-                <div><SideBar model={props.model} /></div>
-                {/* TODO TW1.5 Sidebar will be added here, inside a DIV, like Summary below */}
-                <div>
+                <div><Sidebar model={props.model} /></div>
+                {<div>
                     <Search model={props.model} />
                     <Details model={props.model} />
                     <Summary model={props.model} />
-                </div>
+                </div>}
             </div>
            );
 }

@@ -3,7 +3,8 @@ import "/src/teacherFetch.js"; // protection against fetch() in infinite re-rend
 // (1) ------------ application state (model) -----------
 import { model } from "/src/DinnerModel.js";
 model.setSearchQuery("pizza")
-model.setSearchType("main dishes")
+model.setSearchType("starter")
+//model.doSearch("pizza","starter")
 // uncomment to make the app update when the model changes.
 
 import { reactive } from "vue";

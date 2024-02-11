@@ -11,7 +11,7 @@ function Search(props){
         props.model.setSearchType(evt);
     }
 
-    console.log("props",props.model)
+    console.log("props.searchParams",props.model)
     function searchNowACB(){
         props.model.doSearch(props.model.searchParams);
     }
@@ -19,11 +19,6 @@ function Search(props){
     function setResultChosenACB(evt){
        props.model.setCurrentDishId(evt.id)
     }
-
-    function setSearchResults(){
-
-    }
-    //console.log("props",props.model.searchResultsPromiseState)
 
     function conditionalRenderingResult(promiseState){
         if(!promiseState.promise){

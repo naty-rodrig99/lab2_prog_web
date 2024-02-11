@@ -3,7 +3,9 @@ import { shoppingList } from "../utilities.js";
 
 function Summary(props){
     //console.log(props.model)
-    return <SummaryView people={props.model.numberOfGuests} ingredients={shoppingList(props.model.dishes) /* empty array for starters */}/>;
+    return <SummaryView 
+    people={props.model.numberOfGuests} 
+    ingredients={shoppingList(props.model.dishes)}/>;
 }
 
 export { Summary }
