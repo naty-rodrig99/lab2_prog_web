@@ -14,11 +14,15 @@ const model = {
     currentDishPromiseState: {},
 
     setCurrentDishId(dishId){
-        this.currentDishId= dishId;
-
-        if(dishId || dishId != this.currentDishId){
+        // if(dishId && dishId != this.currentDishId){
+        //       resolvePromise(getDishDetails(dishId),this.currentDishPromiseState);
+        //    }
+        // }
+        if(dishId != this.currentDishId){
             resolvePromise(getDishDetails(dishId),this.currentDishPromiseState);
         }
+        this.currentDishId= dishId;
+        
     },
     
     setNumberOfGuests(number){

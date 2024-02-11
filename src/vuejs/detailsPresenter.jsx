@@ -10,9 +10,9 @@ function Details(props){
     }
 
     return <DetailsView 
-    searchCustomEvent={searchACB}
-    dishData ={props.model.currentDishPromiseState}
-    guests={props.model.numberOfGuests}
+    //searchCustomEvent={searchACB}
+    //dishData ={props.model.currentDishPromiseState}
+    //guests={props.model.numberOfGuests}
     //isDishInMenu={}
 
     addToMenuACB={setAddToMenuACB} 
