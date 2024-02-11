@@ -4,23 +4,32 @@ export function DetailsView(props){
     function addToMenuACB(evt){
         props.addToMenuACB(props.dishData)
     }
+    function cancelFromMenuACB(evt){
+        props.isDishInMenu=false
+    }
 
     return (
         <div className="detailsView">
-            <button disabled={props.isDishInMenu} onClick={addToMenuACB}>Add to menu!</button>
-            <button onClick={addToMenuACB}>Cancel!</button>
-            <h className="dishName">{props.dishData.creditsText}</h>
-            <div className="dishImgDetails">
+            <div className="menuButton">
+                <button disabled={props.isDishInMenu} onClick={addToMenuACB}>Add to menu!</button>
+                <button disabled={!props.isDishInMenu} onClick={cancelFromMenuACB}>Cancel!</button>
+            </div>
+            
+            <h1>{props.dishData.creditsText}</h1>
+
+            <div className="imgAndPrice">
                 <img src={props.dishData.image}></img>
+
+                <div className="textDetails">
+                    <p>Prices: {props.dishData.pricePerServing}</p>
+                    <p>for {props.guests} guests: {props.dishData.pricePerServing * props.guests}</p>
+                </div>
             </div>
-            <div className="dishPriceDetails">
-                <p>Prices: {props.dishData.pricePerServing}</p>
-                <p>for {props.guests} guests: {props.dishData.pricePerServing * props.guests}</p>
-            </div>
-            <div className="ingredientsDetails">
+            
+            <div className="textDetails">
                 {props.dishData.extendedIngredients.map(dishIngredientDetailsACB)}
             </div>
-            <div>
+            <div className="textDetails">
                 <p>{props.dishData.instructions}</p>
             </div>
 
