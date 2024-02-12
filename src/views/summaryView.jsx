@@ -5,7 +5,7 @@ import "/src/style.css"
 /* Functional JSX component. Name must start with capital letter */
 export function SummaryView(props){
     return (
-            <div class="debug">
+            <div class="summaryView">
               Summary for <span title="nr guests">{props.people}</span> persons:
 
             
