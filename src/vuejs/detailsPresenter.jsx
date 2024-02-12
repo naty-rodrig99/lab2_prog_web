@@ -13,11 +13,9 @@ function Details(props){
     }
 
     if(!props.model.currentDishPromiseState.promise){
-        //console.log("here" )
         return "no data"
     }
     if(props.model.currentDishPromiseState.error){
-        //console.log("here11" )
         return props.model.currentDishPromiseState.error
     }
     if(!props.model.currentDishPromiseState.data){

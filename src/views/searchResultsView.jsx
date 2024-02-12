@@ -2,14 +2,8 @@ import "/src/style.css"
 
 export function SearchResultsView(props){
 
-    function dishDetailedACB(evt){
-        console.log("evt",evt)
-        //props.makePromiseACB(evt);
-    }
-
     //used for array rendering
     function searchResultsCB(dishes){
-        //console.log("dishes",dishes)
         function clickSpanACB(evt){ props.resultChosenACB(dishes);}
         function clickImgACB(evt){ props.resultChosenACB(dishes);}
         function clickTitleACB(evt){ props.resultChosenACB(dishes);}
