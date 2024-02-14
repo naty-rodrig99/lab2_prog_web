@@ -2,14 +2,15 @@ import "/src/teacherFetch.js"; // protection against fetch() in infinite re-rend
 
 // (1) ------------ application state (model) -----------
 import { model } from "/src/DinnerModel.js";
-model.setSearchQuery("pizza")
-model.setSearchType("starter")
-//model.doSearch("pizza","starter")
+//console.log(model)
 // uncomment to make the app update when the model changes.
 
 import { reactive } from "vue";
 const reactiveModel= reactive(model);
 
+reactiveModel.setSearchQuery("pizza")
+reactiveModel.setSearchType("starter")
+reactiveModel.doSearch(model.searchParams);
 
 // then use reactiveModel instead of model below!
 

@@ -6,7 +6,6 @@ import "../style.css"
 
 
 function VueRoot(props){
-    console.log(props)
     return (<div>
                 <div className="SidePage"><Sidebar model={props.model} /></div>
                 <div className="MainPage">

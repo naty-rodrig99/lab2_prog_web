@@ -2,15 +2,15 @@ import "/src/teacherFetch.js"; // protection against fetch() in infinite re-rend
 
 // (1) ------------ application state (model) -----------
 import { model } from '/src/DinnerModel.js';
-model.setSearchQuery("pizza")
-model.setSearchType("starter")
-//model.doSearch("pizza","starter")
-// model.doSearch("pizza","starter")
 // uncomment to make the app update when the model changes:
 
 import { observable, configure } from "mobx";
 configure({ enforceActions: "never", });  // we don't use Mobx actions
 const reactiveModel= observable(model);
+
+reactiveModel.setSearchQuery("pizza")
+reactiveModel.setSearchType("starter")
+reactiveModel.doSearch(reactiveModel.searchParams);
 
 // then use reactiveModel instead of model below!
 
