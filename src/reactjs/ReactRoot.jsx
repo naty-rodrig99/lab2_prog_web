@@ -6,7 +6,7 @@ import "../style.css"
 
 // const ReactRoot = observer(   //  will be added in week 3
 function ReactRoot(props){
-    return (<div>
+    return (<div className="flexParent">
                 <div className="SidePage">
                     <Sidebar model={props.model} />
                 </div>

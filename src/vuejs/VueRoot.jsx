@@ -6,7 +6,7 @@ import "../style.css"
 
 
 function VueRoot(props){
-    return (<div>
+    return (<div className="flexParent">
                 <div className="SidePage"><Sidebar model={props.model} /></div>
                 <div className="MainPage">
                     <Search model={props.model} />

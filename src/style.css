@@ -9,82 +9,86 @@ body{
     width:100%;
     min-height:100%;
 }
-.SidePage{
-    float: left;
-    width: 30%;
-    height:100%;
-}
-.MainPage{
-    float: right;
-    width: 70%;
-    height: auto;
-}
+@media (min-width: 250px){
+    .flexParent{
+        display:flex;
+        flex-direction:row;
+        height:100%;
+        flex-wrap: wrap;
+    }
+    .SidePage{
+        flex:0;
+    }
+    .MainPage{
+        flex:1.0;
+    }
 
-.sideBar{
-    margin: 50px 20px
-}
-.searchFormView{
-    margin: 50px 20px 20px 20px
-}
-.searchResultsView {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    column-gap: 10px;
-    margin: 20px 20px 20px 20px;
-    max-width: 90%;
-  }
-.summaryView {
-    border-style:solid;
-    max-width: 90%;
-    margin:40px 0px 20px 0px;
-}
-.searchResultsView span{
-    width: 120px;
-    text-align: center;
-}
-.searchResultsView span img{
-    height: 100;
-    width: 100px;
-    align-items: center;
-}
+    .sideBar{
+        margin: 50px 20px
+    }
+    .searchFormView{
+        margin: 50px 20px 20px 20px
+    }
+    .searchResultsView {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        column-gap: 10px;
+        margin: 20px 20px 20px 20px;
+        max-width: 90%;
+    }
+    .summaryView {
+        border-style:solid;
+        max-width: 90%;
+        margin:40px 0px 20px 0px;
+    }
+    .searchResultsView span{
+        width: 120px;
+        text-align: center;
+    }
+    .searchResultsView span img{
+        height: 100;
+        width: 100px;
+        align-items: center;
+    }
 
-.menuButton{
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    padding: 20px 0 20px 0;
-}
+    .menuButton{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        padding: 20px 0 20px 0;
+    }
 
-.menuButton button{
-    margin-left: 10%;
-    width:120px;
-    height:30px;
-    text-align: center;
-}
-.detailsView{
-    display:inline;
-    align-items: center;
-    padding: 60px 40px;
-}
-.detailsView h1{
-    text-align: left;
-}
+    .menuButton button{
+        margin-left: 10%;
+        width:120px;
+        height:30px;
+        text-align: center;
+    }
+    .detailsView{
+        display:inline;
+        align-items: center;
+        padding: 60px 40px;
+    }
+    .detailsView h1{
+        text-align: left;
+    }
 
-.imgAndPrice{
-    display: flex;
-    min-height: min-content;
-    height: 320px;
-}
+    .imgAndPrice{
+        display: flex;
+        min-height: min-content;
+        height: 320px;
+    }
 
-.imgAndPrice img{
-    height:300px;
-    width: 430px;
-    margin: 10px 5px;
-}
+    .imgAndPrice img{
+        height:300px;
+        width: 430px;
+        margin: 10px 5px;
+    }
 
-.textDetails{
-    border-style: dashed;
-    margin: 30px 0px;
-    padding: 10px 20px;
-    height:fit-content;
-    max-width: 90%
+    .textDetails{
+        border-style: dashed;
+        margin: 30px 0px;
+        padding: 10px 20px;
+        height:fit-content;
+        max-width: 90%
+    }
 }
