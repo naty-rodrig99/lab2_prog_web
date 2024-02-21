@@ -21,8 +21,8 @@ export function DetailsView(props){
                 <img src={props.dishData.image}></img>
 
                 <div className="textDetails">
-                    <p>Prices: {props.dishData.pricePerServing}</p>
-                    <p>for {props.guests} guests: {props.dishData.pricePerServing * props.guests}</p>
+                    <p>Prices: ${props.dishData.pricePerServing}</p>
+                    <p>for {props.guests} guests: ${(props.dishData.pricePerServing * props.guests).toFixed(2)}</p>
                 </div>
             </div>
             

@@ -13,6 +13,7 @@ export function SidebarView(props){
 
     return (
             <div className="sideBar">
+              <td>Number of guests:</td>
                 <button disabled={props.number==1} onClick={clickDecreaseACB}>-</button>
               <span title="nr guests">{props.number}</span>
               <button onClick={clickAddACB}>+</button>
@@ -25,7 +26,7 @@ export function SidebarView(props){
                   <td></td>
                   <td>Total:</td>
                   <td></td>
-                  <td class="TD"> {(props.number*menuPrice(props.dishes)).toFixed(2)}</td>
+                  <td class="TD"> ${(props.number*menuPrice(props.dishes)).toFixed(2)}</td>
                 </tr>
                 </tbody>
               
@@ -54,7 +55,7 @@ export function SidebarView(props){
                 <td><button onClick={clickDeleteACB}>x</button></td>
                  <td><a href="#" onClick={clickDishACB}></a>{dishes.title}</td>
                  <td>{dishType(dishes)}</td>
-                 <td class="TD">{(dishes.pricePerServing*props.number).toFixed(2)}</td>
+                 <td class="TD">${(dishes.pricePerServing*props.number).toFixed(2)}</td>
                </tr>;
     }
 }

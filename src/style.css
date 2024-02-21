@@ -17,7 +17,7 @@ body{
         flex-wrap: wrap;
     }
     .SidePage{
-        flex:0;
+        flex:0.15;
     }
     .MainPage{
         flex:1.0;
