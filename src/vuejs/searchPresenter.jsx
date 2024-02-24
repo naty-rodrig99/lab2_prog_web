@@ -11,7 +11,6 @@ function Search(props){
         props.model.setSearchType(evt);
     }
 
-    console.log("props.searchParams",props.model)
     function searchNowACB(){
         props.model.doSearch(props.model.searchParams);
     }

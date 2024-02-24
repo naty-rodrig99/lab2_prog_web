@@ -5,6 +5,8 @@ import { model } from "/src/DinnerModel.js";
 //console.log(model)
 // uncomment to make the app update when the model changes.
 
+import "/src/firebaseModel.js"
+
 import { reactive } from "vue";
 const reactiveModel= reactive(model);
 

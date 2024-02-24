@@ -14,10 +14,6 @@ const model = {
     currentDishPromiseState: {},
 
     setCurrentDishId(dishId){
-        // if(dishId && dishId != this.currentDishId){
-        //       resolvePromise(getDishDetails(dishId),this.currentDishPromiseState);
-        //    }
-        // }
         if(dishId != this.currentDishId){
             resolvePromise(getDishDetails(dishId),this.currentDishPromiseState);
         }
