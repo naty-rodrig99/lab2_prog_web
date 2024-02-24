@@ -3,16 +3,17 @@ export function DetailsView(props){
 
     function dishAddToMenuACB(evt){
         props.addToMenuACB(props.dishData)
+        window.location.hash="#/search"
     }
-    function cancelFromMenuACB(evt){
-        props.isDishInMenu=false
+    function backToSearchACB(){
+        window.location.hash="#/search"
     }
-
     return (
-        <div className="detailsView">
+        <div className="detailsView" id="detailsView">
+
             <div className="menuButton">
                 <button disabled={props.isDishInMenu} onClick={dishAddToMenuACB}>Add to menu!</button>
-                <button disabled={!props.isDishInMenu}>Cancel!</button>
+                <button disabled={!props.isDishInMenu} onClick={backToSearchACB}>Cancel!</button>
             </div>
             
             <h1>{props.dishData.creditsText}</h1>
@@ -34,7 +35,8 @@ export function DetailsView(props){
             </div>
 
             <a href={props.dishData.sourceUrl}> More Information</a>
-          
+        
+
         </div>
     );
 

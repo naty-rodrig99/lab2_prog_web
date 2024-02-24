@@ -16,10 +16,16 @@ export function SearchFormView(props){
     function dishTypeOptionsCB(dishType){
         return <option key={dishType} value={dishType}>{dishType}</option>;
     }
+    function backToSummaryACB(){
+        window.location.hash="#/summary"
+      }
+
 
     return (
         <div className="searchFormView">
-            <td>Search for a recipe:</td>
+        <td>Search for a recipe:</td>
+
+            <button onClick={backToSummaryACB}>Back to summary</button>
             <input type="text" value={props.text || ""} onChange={sendSearchTextACB}/>
             <select value={props.type || ""}onChange={sendsearchTypeCB}>
                 <option value="">Choose:</option>

@@ -4,9 +4,18 @@ export function SearchResultsView(props){
 
     //used for array rendering
     function searchResultsCB(dishes){
-        function clickSpanACB(evt){ props.resultChosenACB(dishes);}
-        function clickImgACB(evt){ props.resultChosenACB(dishes);}
-        function clickTitleACB(evt){ props.resultChosenACB(dishes);}
+        function clickSpanACB(evt){ 
+            props.resultChosenACB(dishes);
+            window.location.hash="#/details";
+        }
+        function clickImgACB(evt){ 
+            props.resultChosenACB(dishes);
+            window.location.hash="#/details";
+        }
+        function clickTitleACB(evt){ 
+            props.resultChosenACB(dishes);
+            window.location.hash="#/details";
+        }
 
         return <span key={dishes.id} onClick={clickSpanACB}>
                     <img alt="" height="100" src={dishes.image} onClick={clickImgACB}></img>

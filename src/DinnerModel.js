@@ -18,7 +18,6 @@ const model = {
             resolvePromise(getDishDetails(dishId),this.currentDishPromiseState);
         }
         this.currentDishId= dishId;
-        
     },
     
     setNumberOfGuests(number){

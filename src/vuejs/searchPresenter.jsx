@@ -29,6 +29,7 @@ function Search(props){
         if(!promiseState.data){
             return <img src="https://brfenergi.se/iprog/loading.gif"></img>
         }
+
         return <SearchResultsView
         resultChosenACB = {setResultChosenACB}
         searchResults={props.model.searchResultsPromiseState.data}
@@ -43,9 +44,9 @@ function Search(props){
         searchTextACB={setSearchTextACB}
         searchTypeCB={setSearchDishTypeACB}
         searchNowACB={searchNowACB}
-    />
-    {conditionalRenderingResult(props.model.searchResultsPromiseState)}
-        </div>
+        />
+        {conditionalRenderingResult(props.model.searchResultsPromiseState)}
+    </div>
 }
 
 export { Search}

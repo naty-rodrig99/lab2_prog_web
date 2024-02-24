@@ -19,7 +19,8 @@ const Sidebar = observer(             // needed for the presenter to update (its
         return <SidebarView 
         number={props.model.numberOfGuests} 
         dishes={props.model.dishes }
-        onNumberChange={setGuestNumberACB} 
+        onNumberChange={setGuestNumberACB}
+        //onNumbrChange={props.model.setNumberOfGuests.bind(props.model)}
         dishClickedACB={showCurrentDishACB} 
         xClickedACB={deleteDishACB}
         />;

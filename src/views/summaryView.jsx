@@ -5,15 +5,13 @@ import "/src/style.css"
 /* Functional JSX component. Name must start with capital letter */
 export function SummaryView(props){
     return (
-            <div class="summaryView">
-              Summary for <span title="nr guests">{props.people}</span> persons:
-
-            
-              
+            <div >
+              <button onClick={backToSearchACB}>Back to search</button>
+              <div class="summaryView">
+                Summary for <span title="nr guests">{props.people}</span> persons:
               <table>
                   {  //  <---- in JSX/HTML, with this curly brace, we go back to JavaScript, and make a comment
                     //The rest of the file is for TW1.5. If you are at TW1.2, wait!  
-
                 <thead>
                   <tr>
                     <th>Name</th>
@@ -31,8 +29,12 @@ export function SummaryView(props){
                   }
                 </tbody>
               </table>
+              </div>
             </div>
     );
+    function backToSearchACB(){
+      window.location.hash="#/search"
+    }
     /* callback for Array Rendering */
     function ingredientTableRowCB(ingr){
         return <tr key={ /* Reflect on what's a key in array rendering! */ ingr.id } >
