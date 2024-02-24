@@ -23,9 +23,9 @@ export function SearchFormView(props){
 
     return (
         <div className="searchFormView">
-        <td>Search for a recipe:</td>
-
             <button onClick={backToSummaryACB}>Back to summary</button>
+            <td>Search for a recipe:</td>
+
             <input type="text" value={props.text || ""} onChange={sendSearchTextACB}/>
             <select value={props.type || ""}onChange={sendsearchTypeCB}>
                 <option value="">Choose:</option>

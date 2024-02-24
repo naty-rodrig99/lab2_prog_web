@@ -18,13 +18,14 @@ body{
     }
     .SidePage{
         flex:0.15;
+        min-width:300px
     }
     .MainPage{
         flex:1.0;
     }
 
     .sideBar{
-        margin: 50px 20px
+        margin: 50px 20px;
     }
     .searchFormView{
         margin: 50px 20px 20px 20px
@@ -34,11 +35,11 @@ body{
         grid-template-columns: repeat(3, 1fr);
         column-gap: 10px;
         margin: 20px 20px 20px 20px;
-        max-width: 90%;
+        max-width: 80%;
     }
     .summaryView {
         border-style:solid;
-        max-width: 90%;
+        max-width: 80%;
         margin:40px 0px 20px 0px;
     }
     .searchResultsView span{

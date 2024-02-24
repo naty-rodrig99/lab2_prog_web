@@ -13,7 +13,7 @@ export function DetailsView(props){
 
             <div className="menuButton">
                 <button disabled={props.isDishInMenu} onClick={dishAddToMenuACB}>Add to menu!</button>
-                <button disabled={!props.isDishInMenu} onClick={backToSearchACB}>Cancel!</button>
+                <button onClick={backToSearchACB}>Cancel!</button>
             </div>
             
             <h1>{props.dishData.creditsText}</h1>

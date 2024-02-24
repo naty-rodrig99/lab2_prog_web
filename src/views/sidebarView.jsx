@@ -49,14 +49,15 @@ export function SidebarView(props){
       
       function clickDishACB(evt){
         props.dishClickedACB(dishes)
+        //window.location.hash="#/details"
       }
 
 
       return <tr key={dishes.id}>
                 <td><button onClick={clickDeleteACB}>x</button></td>
-                 <td><a href="#/details" onClick={clickDishACB}></a>{dishes.title}</td>
+                 <td><a href="#/details" onClick={clickDishACB}>{dishes.title}</a></td>
                  <td>{dishType(dishes)}</td>
-                 <td class="TD">${(dishes.pricePerServing*props.number).toFixed(2)}</td>
+                 <td class="TD">${(dishes.pricePerServing*props.number).toFixed(2)}</td>  
                </tr>;
     }
 }
