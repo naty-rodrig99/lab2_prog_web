@@ -4,6 +4,7 @@ import { getDatabase, ref, get, set} from "/src/teacherFirebase.js";
 // Add relevant imports here 
 import {firebaseConfig} from "/src/firebaseConfig.js";
 import { model } from './DinnerModel.js';
+import { getMenuDetails } from "./dishSource.js";
 
 // Initialise firebase app, database, ref
 const app= initializeApp(firebaseConfig)
@@ -22,9 +23,9 @@ export function modelToPersistence(objectDinner){
     const dishIds = objectDinner.dishes.map(transformerCB).sort();
     
     const dinnerData = {
-        guests: objectDinner.numberOfGuests,
-        disheIDs: dishIds,
-        currentDishID: objectDinner.currentDishId
+        numberOfGuests: objectDinner.numberOfGuests,
+        dishes: dishIds,
+        currentDishId: objectDinner.currentDishId
     }
     return dinnerData;
 }
@@ -35,28 +36,34 @@ export function modelToPersistence(objectDinner){
     currentDishId:13, 
     dishes:[{id:13, title:"dummy1"}, 
             {id:42, title:"dummy2"}]
-   }))*/ 
+   }))*/
 
-export function persistenceToModel(data_from_firebase){
+export function persistenceToModel(data_from_firebase, model){
+    function responseACB(response){
+        if(response == []){
+            model.setNumberOfGuests(2),
+            model.setCurrentDishId(null),
+            model.dishes = response
+        } else{
+            model.setNumberOfGuests(data_from_firebase.numberOfGuests);
+            model.setCurrentDishId(data_from_firebase.currentDishId);
+            model.dishes = response;
+        } 
+        return response; 
+    } 
+    
     if (!data_from_firebase) {
-        return {
-            numberOfGuests: model.setnumberOfGuests(2),
-            dishes: [],
-            currentDishId: null
-        };
-    } else {
-        return {
-            numberOfGuests: data_from_firebase.guests || 2,
-            dishes: data_from_firebase.disheIDs || [],
-            currentDishId: data_from_firebase.currentDishID || null
-        };
+        return getMenuDetails([]).then(responseACB);
+    } 
+    else {          
+        return getMenuDetails(data_from_firebase.dishes).then(responseACB);
     }
     // TODO return a promise
 }
 
 export function saveToFirebase(model){
-    if(model.ready == true){
-        firebase.set(PATH, modelPersistenceData());
+    if(model.ready){
+        set(ref(db, PATH), modelToPersistence(model));
     }
 }
 
@@ -64,18 +71,14 @@ export function readFromFirebase(model){
     model.ready = false;
 
     function convertDataCB(data_from_firebase){
-        const modelData = persistenceToModel(data_from_firebase);
-        model.ready = true;
-        return modelData;
+        return modelData = persistenceToModel(data_from_firebase);
     }
 
-    function showErrorCB(error){
-        console.error('Error fetching data from Firebase:', error);
-        throw error;
+    function changeModelReadyCB(){
+        model.ready = true;
     }
     
-    const promiseChain = firebase.get(PATH).then(convertDataCB()).catch(showErrorCB);
-    return promiseChain;
+    return get(ref(db, PATH)).then(convertDataCB).then(changeModelReadyCB);
 }
 
 function connectToFirebase(model, watchFunction){
