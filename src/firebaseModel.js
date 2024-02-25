@@ -38,27 +38,25 @@ export function modelToPersistence(objectDinner){
             {id:42, title:"dummy2"}]
    }))*/
 
-export function persistenceToModel(data_from_firebase, model){
+   export function persistenceToModel(data_from_firebase, model){
     function responseACB(response){
-        if(response == []){
-            model.setNumberOfGuests(2),
-            model.setCurrentDishId(null),
-            model.dishes = response
+        if(!response || data_from_firebase.numberOfGuests == null){
+            model.setNumberOfGuests(2);
+            model.setCurrentDishId(null);
+            model.dishes = [];
         } else{
             model.setNumberOfGuests(data_from_firebase.numberOfGuests);
             model.setCurrentDishId(data_from_firebase.currentDishId);
             model.dishes = response;
         } 
         return response; 
-    } 
-    
-    if (!data_from_firebase) {
+    }    
+    if (!data_from_firebase || typeof data_from_firebase.dishes === 'undefined') {
         return getMenuDetails([]).then(responseACB);
     } 
-    else {          
+    else {        
         return getMenuDetails(data_from_firebase.dishes).then(responseACB);
-    }
-    // TODO return a promise
+    }  
 }
 
 export function saveToFirebase(model){
