@@ -15,7 +15,7 @@ const db= getDatabase(app)
 
 const PATH="dinner";
 
-export function modelToPersistence(objectDinner){
+function modelToPersistence(objectDinner){
     function transformerCB(dish){
         return dish.id;
     }
@@ -37,7 +37,7 @@ export function modelToPersistence(objectDinner){
             {id:42, title:"dummy2"}]
    }))*/
 
-   export function persistenceToModel(data_from_firebase, model){
+function persistenceToModel(data_from_firebase, model){
     function responseACB(response){
         if(!response || !data_from_firebase  || !data_from_firebase.numberOfGuests){
             model.setNumberOfGuests(2);
@@ -59,17 +59,17 @@ export function modelToPersistence(objectDinner){
     }  
 }
 
-export function saveToFirebase(model){
+function saveToFirebase(model){
     if(model.ready){
         set(ref(db, PATH), modelToPersistence(model));
     }
 }
 
-export function readFromFirebase(model){
+function readFromFirebase(model){
     model.ready = false;
 
-    function convertDataCB(data_from_firebase){
-        return modelData = persistenceToModel(data_from_firebase);
+    function convertDataCB(snapshot){
+        return persistenceToModel(snapshot.val(),model);
     }
 
     function changeModelReadyCB(){
@@ -80,7 +80,20 @@ export function readFromFirebase(model){
 }
 
 function connectToFirebase(model, watchFunction){
-    // TODO
+    
+    function checkACB(){
+        console.log("checking");
+        // combination of the values that should trigger the side effect
+        // we use an array, but an object will also work
+        return [model.numberOfGuests, model.dishes, model.currentDishId];
+    }
+    function effectACB(){
+        //saveToFirebase(model)
+        console.log("side effect triggred: save to firebase!")
+    }
+
+    readFromFirebase(model).then(watchFunction(checkACB, effectACB));
 }
+
 // Remember to uncomment the following line:
-//export { connectToFirebase, modelToPersistence, persistenceToModel, saveToFirebase, readFromFirebase }
+export { connectToFirebase, modelToPersistence, persistenceToModel, saveToFirebase, readFromFirebase }
