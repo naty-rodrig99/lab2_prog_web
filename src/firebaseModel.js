@@ -19,7 +19,6 @@ export function modelToPersistence(objectDinner){
     function transformerCB(dish){
         return dish.id;
     }
-    
     const dishIds = objectDinner.dishes.map(transformerCB).sort();
     
     const dinnerData = {
@@ -40,11 +39,12 @@ export function modelToPersistence(objectDinner){
 
    export function persistenceToModel(data_from_firebase, model){
     function responseACB(response){
-        if(!response || data_from_firebase.numberOfGuests == null){
+        if(!response || !data_from_firebase  || !data_from_firebase.numberOfGuests){
             model.setNumberOfGuests(2);
             model.setCurrentDishId(null);
             model.dishes = [];
-        } else{
+        }
+        else{
             model.setNumberOfGuests(data_from_firebase.numberOfGuests);
             model.setCurrentDishId(data_from_firebase.currentDishId);
             model.dishes = response;

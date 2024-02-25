@@ -1,4 +1,5 @@
 import "/src/teacherFetch.js"; // protection against fetch() in infinite re-render
+import "/src/firebaseModel.js"
 
 // (1) ------------ application state (model) -----------
 import { model } from '/src/DinnerModel.js';
