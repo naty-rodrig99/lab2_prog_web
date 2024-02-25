@@ -3,7 +3,8 @@ import {Sidebar} from "./sidebarPresenter.jsx";
 import {Details} from "./detailsPresenter.jsx";
 import {Search} from "./searchPresenter.jsx";
 import "../style.css"
-import {  createHashRouter,  RouterProvider, useParams} from "react-router-dom";
+import { observer } from "mobx-react-lite"
+import {  createHashRouter,  RouterProvider} from "react-router-dom";
 
 function makeRouter(model){
     return createHashRouter([
@@ -26,9 +27,10 @@ function makeRouter(model){
     
     ])
     }
-
-// const ReactRoot = observer(   //  will be added in week 3
-function ReactRoot(props){
+const ReactRoot = observer((props)=>{
+    if(!props.model.ready){
+        return <img src="https://brfenergi.se/iprog/loading.gif"></img>
+    }
     return (<div className="flexParent">
                 <div className="SidePage">
                     <Sidebar model={props.model} />
@@ -39,6 +41,6 @@ function ReactRoot(props){
                
             </div>
            );
-}
+})
 
 export { makeRouter, ReactRoot }

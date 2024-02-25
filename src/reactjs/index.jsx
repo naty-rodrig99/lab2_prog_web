@@ -5,7 +5,7 @@ import "/src/firebaseModel.js"
 import { model } from '/src/DinnerModel.js';
 // uncomment to make the app update when the model changes:
 
-import { observable, configure } from "mobx";
+import { reaction, observable, configure } from "mobx";
 configure({ enforceActions: "never", });  // we don't use Mobx actions
 const reactiveModel= observable(model);
 
@@ -32,7 +32,9 @@ createRoot(document.getElementById('root'))
 
 // ------ for debug purposes ----------
 //window.myModel= model;             // make the model available in the Console
-window.myModel= reactiveModel;  
+window.myModel= reactiveModel;
 
+import {connectToFirebase} from '/src/firebaseModel.js'
+connectToFirebase(reactiveModel, reaction)
 
 

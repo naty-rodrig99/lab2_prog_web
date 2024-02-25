@@ -80,7 +80,7 @@ function readFromFirebase(model){
 }
 
 function connectToFirebase(model, watchFunction){
-    
+    readFromFirebase(model)
     function checkACB(){
         console.log("checking");
         // combination of the values that should trigger the side effect
@@ -88,11 +88,10 @@ function connectToFirebase(model, watchFunction){
         return [model.numberOfGuests, model.dishes, model.currentDishId];
     }
     function effectACB(){
-        //saveToFirebase(model)
+        saveToFirebase(model)
         console.log("side effect triggred: save to firebase!")
     }
-
-    readFromFirebase(model).then(watchFunction(checkACB, effectACB));
+    watchFunction(checkACB, effectACB);
 }
 
 // Remember to uncomment the following line:
